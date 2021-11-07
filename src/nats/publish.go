@@ -19,3 +19,9 @@ func Publish(data []byte, subject string) {
 		log.Fatal(err)
 	}
 }
+func NodePublish(data []byte, subject string) {
+	log.Println(string(data), subject)
+	if err := config.NC.Publish("node-scan-results", data); err != nil {
+		log.Fatal(err)
+	}
+}

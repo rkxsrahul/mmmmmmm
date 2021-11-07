@@ -1068,3 +1068,18 @@ func dMARCReject(url, uuid, method string) {
 	body, _ := json.Marshal(reqBody)
 	Publish(body, uuid)
 }
+
+func nodeScan(url, uuid, branch, method string) {
+	log.Println(uuid, " NodeScan")
+	header := "Node Scan"
+	_, mapd := RunBashCommand(url, config.PersistStoragePath+headerFileSlug(header), header)
+	reqBody := RequestData{
+		Data:   mapd,
+		UUID:   uuid,
+		Method: method,
+		Header: header,
+	}
+
+	body, _ := json.Marshal(reqBody)
+	go NodePublish(body, uuid)
+}

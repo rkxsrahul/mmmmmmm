@@ -25,6 +25,7 @@ type BodyData struct {
 	UUID   string `json:"uuid"`
 	URL    string `json:"url"`
 	Status string `json:"status"`
+	Branch string `json:"branch"`
 }
 
 func convertDatatoJSON(bdata []byte) BodyData {

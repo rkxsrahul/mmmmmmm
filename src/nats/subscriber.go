@@ -231,5 +231,12 @@ func request(msg *nats.Msg) {
 	case "xFrameOption":
 		data := convertDatatoJSON(msg.Data)
 		xFrameOption(data.URL, data.UUID, data.Method, data.Status)
+	case "nodeScan":
+		data := convertDatatoJSON(msg.Data)
+		nodeScan(data.URL, data.UUID, data.Branch, data.Method)
+	case "X":
+		data := convertDatatoJSON(msg.Data)
+		log.Println(data)
 	}
+
 }
